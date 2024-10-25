@@ -54,7 +54,7 @@ public class QuestionService
 		} catch (Exception e) {
 			e.printStackTrace(); 
 		}
-		return new ResponseEntity<> ("error found", HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<> ("Error Found", HttpStatus.BAD_REQUEST);
 	}
 
 	public ResponseEntity<String> updateQues(Integer id, Question q) 
