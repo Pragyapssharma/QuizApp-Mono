@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>WDC-PMKSY Course Dashboard</title>
+    <style>
+        .course-box {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .course-box h2 {
+            margin-bottom: 10px;
+        }
+
+        .course-box p {
+            margin-bottom: 5px;
+        }
+
+        .course-box button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>WDC-PMKSY Course Dashboard</h1>
+    <h2>Welcome User: ABC</h2>
+
+    <div th:each="course : ${courses}">
+        <div class="course-box">
+            <h2>Course Name: <span th:text="${course.name}"></span></h2>
+            <p>Course Material: <a th:href="@{/course-material/{courseId}(courseId=${course.id})}">View/Download</a></p>
+            <p>Maximum Marks: <span th:text="${course.maxMarks}"></span></p>
+            <p>Total Questions: <span th:text="${course.totalQuestions}"></span></p>
+            <p>Minimum Qualifying Marks: <span th:text="${course.minQualifyingMarks}"></span></p>
+            <p>Duration: <span th:text="${course.duration}"></span> Minutes</p>
+            <button th:onclick="'location.href=\'/take-test/{courseId}(courseId=${course.id})\''">Take Test</button>
+            <button th:onclick="'location.href=\'/participate/{courseId}(courseId=${course.id})\''">Participate</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Website hosted and maintained by National Informatics Center.</p>
+        <p>Best viewed on Google Chrome Version 50 or above and Mozilla Firefox 50 or above versions of these browsers with resolution 1024 X 768.</p>
+        <p>Copyright 2019 Department of Land Resources. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
